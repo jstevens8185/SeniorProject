@@ -19,14 +19,14 @@ namespace SeniorProject
 
         private void EnterDataButton_Click(object sender, EventArgs e)
         {
-            EnterData enterData = new EnterData();
+            EnterDataForm enterData = new EnterDataForm();
             enterData.Show();
             this.Hide();
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            View reports = new View();
+            ViewForm reports = new ViewForm();
             reports.Show();
             this.Hide();
         }

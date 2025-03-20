@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SeniorProject
 {
-    public partial class EnterData : Form
+    public partial class EnterDataForm : Form
     {
-        public EnterData()
+        public EnterDataForm()
         {
             InitializeComponent();
             LoadData();
@@ -69,6 +69,11 @@ namespace SeniorProject
         {
             SaveData();
             LoadData();
+        }
+
+        private void EnterData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 

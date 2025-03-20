@@ -51,7 +51,7 @@ namespace SeniorProject
             {
                 timer.Stop();
                 
-                this.Close();
+                this.Visible = false;
             }
         }
 
@@ -78,6 +78,11 @@ namespace SeniorProject
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void LoadingScreen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

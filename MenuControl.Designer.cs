@@ -39,9 +39,10 @@
             this.navigationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enterDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewChartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createSLOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,38 +74,38 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             // 
             // createSLOToolStripMenuItem
             // 
             this.createSLOToolStripMenuItem.Name = "createSLOToolStripMenuItem";
-            this.createSLOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createSLOToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.createSLOToolStripMenuItem.Text = "Create SLO";
             this.createSLOToolStripMenuItem.Click += new System.EventHandler(this.createSLOToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -113,7 +114,8 @@
             this.navigationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.homeToolStripMenuItem,
             this.enterDataToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.ViewChartsToolStripMenuItem,
+            this.createSLOToolStripMenuItem1});
             this.navigationToolStripMenuItem.Name = "navigationToolStripMenuItem";
             this.navigationToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.navigationToolStripMenuItem.Text = "Navigation";
@@ -121,21 +123,23 @@
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.homeToolStripMenuItem.Text = "Home";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // enterDataToolStripMenuItem
             // 
             this.enterDataToolStripMenuItem.Name = "enterDataToolStripMenuItem";
-            this.enterDataToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.enterDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.enterDataToolStripMenuItem.Text = "Enter Data";
+            this.enterDataToolStripMenuItem.Click += new System.EventHandler(this.enterDataToolStripMenuItem_Click);
             // 
-            // reportsToolStripMenuItem
+            // ViewChartsToolStripMenuItem
             // 
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.reportsToolStripMenuItem.Text = "Reports";
+            this.ViewChartsToolStripMenuItem.Name = "ViewChartsToolStripMenuItem";
+            this.ViewChartsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ViewChartsToolStripMenuItem.Text = "View Charts";
+            this.ViewChartsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -148,9 +152,16 @@
             // resetDatabaseToolStripMenuItem
             // 
             this.resetDatabaseToolStripMenuItem.Name = "resetDatabaseToolStripMenuItem";
-            this.resetDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resetDatabaseToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.resetDatabaseToolStripMenuItem.Text = "Reset Database";
             this.resetDatabaseToolStripMenuItem.Click += new System.EventHandler(this.resetDatabaseToolStripMenuItem_Click);
+            // 
+            // createSLOToolStripMenuItem1
+            // 
+            this.createSLOToolStripMenuItem1.Name = "createSLOToolStripMenuItem1";
+            this.createSLOToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.createSLOToolStripMenuItem1.Text = "CreateSLO";
+            this.createSLOToolStripMenuItem1.Click += new System.EventHandler(this.createSLOToolStripMenuItem_Click);
             // 
             // MenuControl
             // 
@@ -178,9 +189,10 @@
         private System.Windows.Forms.ToolStripMenuItem navigationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enterDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ViewChartsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createSLOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createSLOToolStripMenuItem1;
     }
 }

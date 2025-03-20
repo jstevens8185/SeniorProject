@@ -63,6 +63,7 @@
             this.Controls.Add(this.LoadingLabel);
             this.Name = "LoadingScreen";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoadingScreen_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

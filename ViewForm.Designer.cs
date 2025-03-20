@@ -1,6 +1,6 @@
 ﻿namespace SeniorProject
 {
-    partial class View
+    partial class ViewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -73,15 +73,16 @@
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart2";
             // 
-            // Reports
+            // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.menuControl1);
-            this.Name = "Reports";
+            this.Name = "View";
             this.Text = "Reports";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.View_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 

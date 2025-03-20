@@ -144,6 +144,7 @@
             this.Controls.Add(this.SLONameLabel);
             this.Name = "CreateSloForm";
             this.Text = "CreateSloForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateSloForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

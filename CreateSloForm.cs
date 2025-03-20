@@ -16,5 +16,10 @@ namespace SeniorProject
         {
             InitializeComponent();
         }
+
+        private void CreateSloForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -11,9 +11,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SeniorProject
 {
-    public partial class View : Form
+    public partial class ViewForm : Form
     {
-        public View()
+        public ViewForm()
         {
             InitializeComponent();
             LoadChartData();
@@ -76,6 +76,11 @@ namespace SeniorProject
             }
 
             chart1.Series.Add(series);
+        }
+
+        private void View_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

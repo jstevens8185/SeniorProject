@@ -34,14 +34,14 @@ namespace SeniorProject
                 {
                     form.Show();
                     form.Activate();
-                    parentForm?.Close();
+                    parentForm.Visible = false;
                     return;
                 }
             }
 
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
-            parentForm.Hide();
+            parentForm.Visible = false;
 
         }
 
@@ -67,7 +67,7 @@ namespace SeniorProject
 
             CreateSloForm createSloForm = new CreateSloForm();
             createSloForm.Show();
-            parentForm.Hide();
+            parentForm.Visible = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,6 +128,56 @@ namespace SeniorProject
                     MessageBox.Show($"Error resetting database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
+
+            if (parentForm is ViewForm)
+            {
+                return;
+            }
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ViewForm)
+                {
+                    form.Show();
+                    form.Activate();
+                    parentForm?.Close();
+                    return;
+                }
+            }
+
+            ViewForm viewForm = new ViewForm();
+            viewForm.Show();
+            parentForm.Visible = false;
+        }
+
+        private void enterDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
+
+            if (parentForm is EnterDataForm)
+            {
+                return;
+            }
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is EnterDataForm)
+                {
+                    form.Show();
+                    form.Activate();
+                    parentForm.Visible = false;
+                    return;
+                }
+            }
+
+            EnterDataForm enterDataForm = new EnterDataForm();
+            enterDataForm.Show();
+            parentForm.Visible = false;
         }
     }
 }

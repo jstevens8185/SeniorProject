@@ -1,6 +1,6 @@
 ﻿namespace SeniorProject
 {
-    partial class EnterData
+    partial class EnterDataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -193,6 +193,7 @@
             this.Controls.Add(this.MenuControl);
             this.Name = "EnterData";
             this.Text = "AddData";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EnterData_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
