@@ -40,9 +40,9 @@
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enterDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewChartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createSLOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createSLOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,7 +139,14 @@
             this.ViewChartsToolStripMenuItem.Name = "ViewChartsToolStripMenuItem";
             this.ViewChartsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ViewChartsToolStripMenuItem.Text = "View Charts";
-            this.ViewChartsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
+            this.ViewChartsToolStripMenuItem.Click += new System.EventHandler(this.ViewChartsToolStripMenuItem_Click);
+            // 
+            // createSLOToolStripMenuItem1
+            // 
+            this.createSLOToolStripMenuItem1.Name = "createSLOToolStripMenuItem1";
+            this.createSLOToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.createSLOToolStripMenuItem1.Text = "CreateSLO";
+            this.createSLOToolStripMenuItem1.Click += new System.EventHandler(this.createSLOToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -155,13 +162,6 @@
             this.resetDatabaseToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.resetDatabaseToolStripMenuItem.Text = "Reset Database";
             this.resetDatabaseToolStripMenuItem.Click += new System.EventHandler(this.resetDatabaseToolStripMenuItem_Click);
-            // 
-            // createSLOToolStripMenuItem1
-            // 
-            this.createSLOToolStripMenuItem1.Name = "createSLOToolStripMenuItem1";
-            this.createSLOToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.createSLOToolStripMenuItem1.Text = "CreateSLO";
-            this.createSLOToolStripMenuItem1.Click += new System.EventHandler(this.createSLOToolStripMenuItem_Click);
             // 
             // MenuControl
             // 

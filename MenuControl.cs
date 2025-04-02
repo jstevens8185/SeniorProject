@@ -130,7 +130,9 @@ namespace SeniorProject
             }
         }
 
-        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+       
+
+        private void ViewChartsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form parentForm = this.FindForm();
 
