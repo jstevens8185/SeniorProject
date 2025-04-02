@@ -113,6 +113,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SloDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SloDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +161,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SloDBDataSet.xsc">
+      <DependentUpon>SloDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SloDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SloDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SloDBDataSet.xss">
+      <DependentUpon>SloDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

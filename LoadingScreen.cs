@@ -24,7 +24,7 @@ namespace SeniorProject
         {
             InitializeComponent();
             InitializeLoading();
-            InitializeDatabase();
+            //InitializeDatabase();
         }
 
         private void InitializeLoading()
@@ -55,30 +55,30 @@ namespace SeniorProject
             }
         }
 
-        public void InitializeDatabase()
-        {
-            string dbPath = "Database/data.db"; // Path to your SQLite file
+        //public void InitializeDatabase()
+        //{
+        //    string dbPath = "Database/data.db"; // Path to your SQLite file
 
-            // Check if the database file exists; if not, create it
-            if (!File.Exists(dbPath))
-            {
-                SQLiteConnection.CreateFile(dbPath);
-            }
+        //    // Check if the database file exists; if not, create it
+        //    if (!File.Exists(dbPath))
+        //    {
+        //        SQLiteConnection.CreateFile(dbPath);
+        //    }
 
-            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
-            {
-                conn.Open();
-                string createTableQuery = @"CREATE TABLE IF NOT EXISTS StudentGrades (
-                                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    Year INTEGER NOT NULL,
-                                    Grade TEXT NOT NULL
-                                );";
-                using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
+        //    using (SQLiteConnection conn = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
+        //    {
+        //        conn.Open();
+        //        string createTableQuery = @"CREATE TABLE IF NOT EXISTS StudentGrades (
+        //                            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        //                            Year INTEGER NOT NULL,
+        //                            Grade TEXT NOT NULL
+        //                        );";
+        //        using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
+        //        {
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
 
         private void LoadingScreen_FormClosed(object sender, FormClosedEventArgs e)
         {
