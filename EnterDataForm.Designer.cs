@@ -33,22 +33,22 @@
             this.YearComboBox = new System.Windows.Forms.ComboBox();
             this.YearLabel = new System.Windows.Forms.Label();
             this.SloSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.sLOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sloDBDataSet = new SeniorProject.SloDBDataSet();
             this.SloSelectLabel = new System.Windows.Forms.Label();
             this.MetricComboBox = new System.Windows.Forms.ComboBox();
+            this.measurementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MetricLabel = new System.Windows.Forms.Label();
             this.DataTextBox = new System.Windows.Forms.TextBox();
             this.DataLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
-            this.sloDBDataSet = new SeniorProject.SloDBDataSet();
-            this.measurementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.measurementTableAdapter = new SeniorProject.SloDBDataSetTableAdapters.MeasurementTableAdapter();
-            this.sLOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sLOTableAdapter = new SeniorProject.SloDBDataSetTableAdapters.SLOTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sloDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.measurementBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuControl
@@ -104,8 +104,19 @@
             this.SloSelectComboBox.Location = new System.Drawing.Point(140, 165);
             this.SloSelectComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.SloSelectComboBox.Name = "SloSelectComboBox";
-            this.SloSelectComboBox.Size = new System.Drawing.Size(160, 24);
+            this.SloSelectComboBox.Size = new System.Drawing.Size(286, 24);
             this.SloSelectComboBox.TabIndex = 3;
+            this.SloSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.SloSelectComboBox_SelectedIndexChanged);
+            // 
+            // sLOBindingSource
+            // 
+            this.sLOBindingSource.DataMember = "SLO";
+            this.sLOBindingSource.DataSource = this.sloDBDataSet;
+            // 
+            // sloDBDataSet
+            // 
+            this.sloDBDataSet.DataSetName = "SloDBDataSet";
+            this.sloDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // SloSelectLabel
             // 
@@ -125,8 +136,13 @@
             this.MetricComboBox.Location = new System.Drawing.Point(140, 245);
             this.MetricComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.MetricComboBox.Name = "MetricComboBox";
-            this.MetricComboBox.Size = new System.Drawing.Size(160, 24);
+            this.MetricComboBox.Size = new System.Drawing.Size(286, 24);
             this.MetricComboBox.TabIndex = 5;
+            // 
+            // measurementBindingSource
+            // 
+            this.measurementBindingSource.DataMember = "Measurement";
+            this.measurementBindingSource.DataSource = this.sloDBDataSet;
             // 
             // MetricLabel
             // 
@@ -186,24 +202,9 @@
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
             // 
-            // sloDBDataSet
-            // 
-            this.sloDBDataSet.DataSetName = "SloDBDataSet";
-            this.sloDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // measurementBindingSource
-            // 
-            this.measurementBindingSource.DataMember = "Measurement";
-            this.measurementBindingSource.DataSource = this.sloDBDataSet;
-            // 
             // measurementTableAdapter
             // 
             this.measurementTableAdapter.ClearBeforeFill = true;
-            // 
-            // sLOBindingSource
-            // 
-            this.sLOBindingSource.DataMember = "SLO";
-            this.sLOBindingSource.DataSource = this.sloDBDataSet;
             // 
             // sLOTableAdapter
             // 
@@ -232,9 +233,9 @@
             this.Text = "AddData";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EnterData_FormClosed);
             this.Load += new System.EventHandler(this.EnterDataForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sloDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.measurementBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
