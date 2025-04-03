@@ -27,6 +27,8 @@ namespace SeniorProject
 
         private void EnterDataForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sloDBDataSet.SLO' table. You can move, or remove it, as needed.
+            this.sLOTableAdapter.Fill(this.sloDBDataSet.SLO);
             // TODO: This line of code loads data into the 'sloDBDataSet.Measurement' table. You can move, or remove it, as needed.
             this.measurementTableAdapter.Fill(this.sloDBDataSet.Measurement);
 

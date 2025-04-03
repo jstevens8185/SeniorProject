@@ -44,8 +44,11 @@
             this.sloDBDataSet = new SeniorProject.SloDBDataSet();
             this.measurementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.measurementTableAdapter = new SeniorProject.SloDBDataSetTableAdapters.MeasurementTableAdapter();
+            this.sLOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sLOTableAdapter = new SeniorProject.SloDBDataSetTableAdapters.SLOTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sloDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.measurementBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuControl
@@ -95,6 +98,8 @@
             // 
             // SloSelectComboBox
             // 
+            this.SloSelectComboBox.DataSource = this.sLOBindingSource;
+            this.SloSelectComboBox.DisplayMember = "Title";
             this.SloSelectComboBox.FormattingEnabled = true;
             this.SloSelectComboBox.Location = new System.Drawing.Point(140, 165);
             this.SloSelectComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -114,6 +119,8 @@
             // 
             // MetricComboBox
             // 
+            this.MetricComboBox.DataSource = this.measurementBindingSource;
+            this.MetricComboBox.DisplayMember = "Title";
             this.MetricComboBox.FormattingEnabled = true;
             this.MetricComboBox.Location = new System.Drawing.Point(140, 245);
             this.MetricComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -193,6 +200,15 @@
             // 
             this.measurementTableAdapter.ClearBeforeFill = true;
             // 
+            // sLOBindingSource
+            // 
+            this.sLOBindingSource.DataMember = "SLO";
+            this.sLOBindingSource.DataSource = this.sloDBDataSet;
+            // 
+            // sLOTableAdapter
+            // 
+            this.sLOTableAdapter.ClearBeforeFill = true;
+            // 
             // EnterDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -218,6 +234,7 @@
             this.Load += new System.EventHandler(this.EnterDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sloDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.measurementBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,5 +257,7 @@
         private SloDBDataSet sloDBDataSet;
         private System.Windows.Forms.BindingSource measurementBindingSource;
         private SloDBDataSetTableAdapters.MeasurementTableAdapter measurementTableAdapter;
+        private System.Windows.Forms.BindingSource sLOBindingSource;
+        private SloDBDataSetTableAdapters.SLOTableAdapter sLOTableAdapter;
     }
 }

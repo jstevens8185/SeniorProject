@@ -34,11 +34,11 @@ namespace SeniorProject {
         
         private TargetDataTable tableTarget;
         
-        private global::System.Data.DataRelation relationFK_Measurement_SLO;
+        private global::System.Data.DataRelation relationFK_Target_Measurement;
         
         private global::System.Data.DataRelation relationFK_Score_Measurement;
         
-        private global::System.Data.DataRelation relationFK_Target_Measurement;
+        private global::System.Data.DataRelation relationFK_Measurement_SLO;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -296,9 +296,9 @@ namespace SeniorProject {
                     this.tableTarget.InitVars();
                 }
             }
-            this.relationFK_Measurement_SLO = this.Relations["FK_Measurement_SLO"];
-            this.relationFK_Score_Measurement = this.Relations["FK_Score_Measurement"];
             this.relationFK_Target_Measurement = this.Relations["FK_Target_Measurement"];
+            this.relationFK_Score_Measurement = this.Relations["FK_Score_Measurement"];
+            this.relationFK_Measurement_SLO = this.Relations["FK_Measurement_SLO"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -319,18 +319,18 @@ namespace SeniorProject {
             base.Tables.Add(this.tableTable);
             this.tableTarget = new TargetDataTable();
             base.Tables.Add(this.tableTarget);
-            this.relationFK_Measurement_SLO = new global::System.Data.DataRelation("FK_Measurement_SLO", new global::System.Data.DataColumn[] {
-                        this.tableSLO.SLO_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableMeasurement.SLO_IDColumn}, false);
-            this.Relations.Add(this.relationFK_Measurement_SLO);
-            this.relationFK_Score_Measurement = new global::System.Data.DataRelation("FK_Score_Measurement", new global::System.Data.DataColumn[] {
-                        this.tableMeasurement.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableScore.MeasureIDColumn}, false);
-            this.Relations.Add(this.relationFK_Score_Measurement);
             this.relationFK_Target_Measurement = new global::System.Data.DataRelation("FK_Target_Measurement", new global::System.Data.DataColumn[] {
                         this.tableMeasurement.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableTarget.MeasureIDColumn}, false);
             this.Relations.Add(this.relationFK_Target_Measurement);
+            this.relationFK_Score_Measurement = new global::System.Data.DataRelation("FK_Score_Measurement", new global::System.Data.DataColumn[] {
+                        this.tableMeasurement.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableScore.MeasureIDColumn}, false);
+            this.Relations.Add(this.relationFK_Score_Measurement);
+            this.relationFK_Measurement_SLO = new global::System.Data.DataRelation("FK_Measurement_SLO", new global::System.Data.DataColumn[] {
+                        this.tableSLO.SLO_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMeasurement.SLO_IDColumn}, false);
+            this.Relations.Add(this.relationFK_Measurement_SLO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -448,8 +448,6 @@ namespace SeniorProject {
             
             private global::System.Data.DataColumn columnTitle;
             
-            private global::System.Data.DataColumn columnweight;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MeasurementDataTable() {
@@ -517,14 +515,6 @@ namespace SeniorProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn weightColumn {
-                get {
-                    return this.columnweight;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -560,14 +550,13 @@ namespace SeniorProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeasurementRow AddMeasurementRow(SLORow parentSLORowByFK_Measurement_SLO, string Description, string Title, float weight) {
+            public MeasurementRow AddMeasurementRow(SLORow parentSLORowByFK_Measurement_SLO, string Description, string Title) {
                 MeasurementRow rowMeasurementRow = ((MeasurementRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Description,
-                        Title,
-                        weight};
+                        Title};
                 if ((parentSLORowByFK_Measurement_SLO != null)) {
                     columnValuesArray[1] = parentSLORowByFK_Measurement_SLO[0];
                 }
@@ -604,7 +593,6 @@ namespace SeniorProject {
                 this.columnSLO_ID = base.Columns["SLO_ID"];
                 this.columnDescription = base.Columns["Description"];
                 this.columnTitle = base.Columns["Title"];
-                this.columnweight = base.Columns["weight"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -618,8 +606,6 @@ namespace SeniorProject {
                 base.Columns.Add(this.columnDescription);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
-                this.columnweight = new global::System.Data.DataColumn("weight", typeof(float), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnweight);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -632,7 +618,6 @@ namespace SeniorProject {
                 this.columnDescription.MaxLength = 150;
                 this.columnTitle.AllowDBNull = false;
                 this.columnTitle.MaxLength = 50;
-                this.columnweight.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1988,17 +1973,6 @@ namespace SeniorProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float weight {
-                get {
-                    return ((float)(this[this.tableMeasurement.weightColumn]));
-                }
-                set {
-                    this[this.tableMeasurement.weightColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SLORow SLORow {
                 get {
                     return ((SLORow)(this.GetParentRow(this.Table.ParentRelations["FK_Measurement_SLO"])));
@@ -2022,23 +1996,23 @@ namespace SeniorProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ScoreRow[] GetScoreRows() {
-                if ((this.Table.ChildRelations["FK_Score_Measurement"] == null)) {
-                    return new ScoreRow[0];
-                }
-                else {
-                    return ((ScoreRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Score_Measurement"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TargetRow[] GetTargetRows() {
                 if ((this.Table.ChildRelations["FK_Target_Measurement"] == null)) {
                     return new TargetRow[0];
                 }
                 else {
                     return ((TargetRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Target_Measurement"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ScoreRow[] GetScoreRows() {
+                if ((this.Table.ChildRelations["FK_Score_Measurement"] == null)) {
+                    return new ScoreRow[0];
+                }
+                else {
+                    return ((ScoreRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Score_Measurement"])));
                 }
             }
         }
@@ -2556,43 +2530,38 @@ namespace SeniorProject.SloDBDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("SLO_ID", "SLO_ID");
             tableMapping.ColumnMappings.Add("Description", "Description");
             tableMapping.ColumnMappings.Add("Title", "Title");
-            tableMapping.ColumnMappings.Add("weight", "weight");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Measurement] WHERE (([Id] = @Original_Id) AND ([SLO_ID] = @Original_SLO_ID) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Title] = @Original_Title) AND ([weight] = @Original_weight))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Measurement] WHERE (([Id] = @Original_Id) AND ([SLO_ID] = @Original_" +
+                "SLO_ID) AND ([Description] = @Original_Description) AND ([Title] = @Original_Tit" +
+                "le))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SLO_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SLO_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weight", global::System.Data.SqlDbType.Real, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Measurement] ([SLO_ID], [Description], [Title], [weight]) VALU" +
-                "ES (@SLO_ID, @Description, @Title, @weight);\r\nSELECT Id, SLO_ID, Description, Ti" +
-                "tle, weight FROM Measurement WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Measurement] ([SLO_ID], [Description], [Title]) VALUES (@SLO_ID, @De" +
+                "scription, @Title);\r\nSELECT Id, SLO_ID, Description, Title FROM Measurement WHER" +
+                "E (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SLO_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SLO_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weight", global::System.Data.SqlDbType.Real, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Measurement] SET [SLO_ID] = @SLO_ID, [Description] = @Description, [Title] = @Title, [weight] = @weight WHERE (([Id] = @Original_Id) AND ([SLO_ID] = @Original_SLO_ID) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Title] = @Original_Title) AND ([weight] = @Original_weight));
-SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Measurement] SET [SLO_ID] = @SLO_ID, [Description] = @Description, [Title] = @Title WHERE (([Id] = @Original_Id) AND ([SLO_ID] = @Original_SLO_ID) AND ([Description] = @Original_Description) AND ([Title] = @Original_Title));
+SELECT Id, SLO_ID, Description, Title FROM Measurement WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SLO_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SLO_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weight", global::System.Data.SqlDbType.Real, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SLO_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SLO_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weight", global::System.Data.SqlDbType.Real, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2609,7 +2578,7 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, SLO_ID, Description, Title, weight FROM dbo.Measurement";
+            this._commandCollection[0].CommandText = "SELECT Id, SLO_ID, Description, Title FROM Measurement";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2670,24 +2639,21 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title, float Original_weight) {
+        public virtual int Delete(int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_SLO_ID));
             if ((Original_Description == null)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Description");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Description));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Description));
             }
             if ((Original_Title == null)) {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Title));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Title));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((float)(Original_weight));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2708,10 +2674,10 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int SLO_ID, string Description, string Title, float weight) {
+        public virtual int Insert(int SLO_ID, string Description, string Title) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SLO_ID));
             if ((Description == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Description");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Description));
@@ -2722,7 +2688,6 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Title));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((float)(weight));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2743,10 +2708,10 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SLO_ID, string Description, string Title, float weight, int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title, float Original_weight, int Id) {
+        public virtual int Update(int SLO_ID, string Description, string Title, int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title, int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(SLO_ID));
             if ((Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Description");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Description));
@@ -2757,25 +2722,21 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Title));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((float)(weight));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_SLO_ID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_SLO_ID));
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Description");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Description));
             }
             if ((Original_Title == null)) {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Title));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Title));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((float)(Original_weight));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2796,8 +2757,8 @@ SELECT Id, SLO_ID, Description, Title, weight FROM Measurement WHERE (Id = @Id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int SLO_ID, string Description, string Title, float weight, int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title, float Original_weight) {
-            return this.Update(SLO_ID, Description, Title, weight, Original_Id, Original_SLO_ID, Original_Description, Original_Title, Original_weight, Original_Id);
+        public virtual int Update(int SLO_ID, string Description, string Title, int Original_Id, int Original_SLO_ID, string Original_Description, string Original_Title) {
+            return this.Update(SLO_ID, Description, Title, Original_Id, Original_SLO_ID, Original_Description, Original_Title, Original_Id);
         }
     }
     
