@@ -16,12 +16,6 @@ namespace SeniorProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            using (LoadingScreen loadingScreen = new LoadingScreen())
-            {
-                loadingScreen.ShowDialog();
-            }
-
             Application.Run(new MainMenu());
         }
     }
